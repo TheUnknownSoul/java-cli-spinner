@@ -12,6 +12,7 @@
     <description>Lightweight console spinner that loads styles from JSON</description>
     <url>https://github.com/TheUnknownSoul/java-cli-spinner</url>
     <profiles>
+        <!-- GitHub Packages -->
         <profile>
             <id>publish-github</id>
             <distributionManagement>
@@ -21,9 +22,9 @@
                 </repository>
             </distributionManagement>
         </profile>
-
+        <!-- Maven Central -->
         <profile>
-            <id>release-central</id>
+            <id>central</id>
             <build>
                 <plugins>
                     <plugin>
@@ -43,7 +44,9 @@
                             <execution>
                                 <id>sign-artifacts</id>
                                 <phase>verify</phase>
-                                <goals><goal>sign</goal></goals>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
                             </execution>
                         </executions>
 
@@ -103,7 +106,9 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
-                        <goals><goal>jar-no-fork</goal></goals>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
                         <configuration>
 
                         </configuration>
@@ -118,21 +123,13 @@
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
-                        <goals><goal>jar</goal></goals>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
 
-            <!-- Publishing in Maven Central via Central Portal -->
-            <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.5.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <publishingServerId>central</publishingServerId>
-                </configuration>
-            </plugin>
 
             <!-- (Optional) sign artifact -->
             <plugin>
@@ -143,7 +140,9 @@
                     <execution>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
-                        <goals><goal>sign</goal></goals>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -169,7 +168,9 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals><goal>shade</goal></goals>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <shadedClassifierName>all</shadedClassifierName>
@@ -189,21 +190,24 @@
                                 </filter>
                             </filters>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>spinner.Main</mainClass>
                                     <manifestEntries>
                                         <Multi-Release>true</Multi-Release>
                                     </manifestEntries>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer"/>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ApacheNoticeResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
 
 
         </plugins>
