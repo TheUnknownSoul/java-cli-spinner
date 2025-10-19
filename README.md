@@ -1,5 +1,6 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![Static Badge](https://img.shields.io/badge/Language-Java_21-orange)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.theunknownsoul/java-cli-spinner.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.github.theunknownsoul/java-cli-spinner)
 
 
 # Java command line spinner
