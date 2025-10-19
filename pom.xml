@@ -11,13 +11,17 @@
     <name>java-cli-spinner</name>
     <description>Lightweight console spinner that loads styles from JSON</description>
     <url>https://github.com/TheUnknownSoul/java-cli-spinner</url>
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/TheUnknownSoul/java-cli-spinner</url>
-        </repository>
-    </distributionManagement>
+    <profiles>
+        <profile>
+            <id>publish-github</id>
+            <distributionManagement>
+                <repository>
+                    <id>github</id>
+                    <url>https://maven.pkg.github.com/TheUnknownSoul/java-cli-spinner</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
     <licenses>
         <license>
