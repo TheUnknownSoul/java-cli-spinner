@@ -13,9 +13,9 @@ Install spinner with importing from maven central:
 
 ```bash
 <dependency>
-  <groupId>io.roiandrii</groupId>
+  <groupId>io.github.theunknownsoul</groupId>
   <artifactId>java-cli-spinner</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
