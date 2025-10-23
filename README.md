@@ -7,6 +7,7 @@
 
 🤝 Small utility for Java developers who creates command line tools.
 
+![Screenshot](/screenshot.gif)
 ## Installation
 
 Install spinner with importing from maven central:
