@@ -22,25 +22,26 @@ Install spinner with importing from maven central:
 ## Usage
 
 ```java
-import io.roiandrii.spinner.*;
+import spinner.implementation.Spinner;
+import spinner.implementation.SpinnerStyle;
+import spinner.implementation.SpinnerStylesLoader;
 import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ReadFileExample {
-    public static void main(String[] args) throws Exception {
-        SpinnerStylesLoader loader = SpinnerStylesLoader.fromClasspath("spinners.json");
-        // change type of styling. see spinners.json for more in resources
-        SpinnerStyle style = loader.get("dots2");
-
-        try (Spinner s = Spinner.start(style, "Reading file.txt…")) {
-            List<String> lines = Files.readAllLines(Path.of("file.txt"), StandardCharsets.UTF_8);
-            s.succeed("Loaded " + lines.size() + " lines");
-        } catch (Exception e) {
+    public static void main(String[] args) {
+        try {
+            SpinnerStylesLoader loader = SpinnerStylesLoader.fromClasspath("spinners.json");
+            // change type of styling. see spinners.json for more in resources
+            SpinnerStyle style = loader.get("dots2");
             try (Spinner s = Spinner.start(style, "Reading file.txt…")) {
+                List<String> lines = Files.readAllLines(Path.of("file.txt"), StandardCharsets.UTF_8);
+                s.succeed("Loaded " + lines.size() + " lines");
+        } catch (IOException e) {
                 s.fail("Failed: " + e.getMessage());
             }
-            throw e;
+            
         }
     }
 }
